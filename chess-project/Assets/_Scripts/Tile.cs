@@ -8,6 +8,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private GameObject _highlight;
 
+
     // selects a color for the tile by a bool value
     public void Init(bool isOffset){
         _renderer.color = isOffset ?_baseColor : _offsetColor;
