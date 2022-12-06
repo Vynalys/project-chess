@@ -176,7 +176,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -240,6 +240,7 @@ MonoBehaviour:
   _height: 8
   _tilePrefab: {fileID: 2314546356791625905, guid: 274551beebfe30243bc37c5d529340a4, type: 3}
   _cam: {fileID: 333190287}
+  _pieceManager: {fileID: 1842085176}
 --- !u!4 &1797193918
 Transform:
   m_ObjectHideFlags: 0
@@ -284,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52388c56d88b3404292fc8adf863f7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _piecePrefab: {fileID: 0}
+  _piecePrefab: {fileID: 3554070919306038316, guid: 427ef8e755ac47c41be19a817b5b87cb, type: 3}
 --- !u!4 &1842085177
 Transform:
   m_ObjectHideFlags: 0
