@@ -12,7 +12,7 @@ public class PieceManager : MonoBehaviour
     // Might not be needed
     // [SerializeField] Piece _piecePrefab;
     
-    // constant float
+    // constant float indicating the scale of the pieces for x and y 
     const private float _pieceScale = 1.5f;  
 
     public Piece _piece;
@@ -27,8 +27,6 @@ public class PieceManager : MonoBehaviour
 
         // Create the pawn pieces
         if(y == 1 || y == 6){
-            Debug.Log(System.String.Format("Tile found: {0},{1}", x, y));
-
             // Create an pawn object with the name and at the psoition x and y
             GameObject spawnedPiece = CreatePieceGameObject($"Pawn {x},{y}", x, y);
 
@@ -79,13 +77,20 @@ public class PieceManager : MonoBehaviour
     Create an GameObject representing a chess piece  
     **/
     public GameObject CreatePieceGameObject(string name, float x, float y){
+        // Create GameObject
         GameObject spawnedPiece = new GameObject(name);
+        
+        // set the position and the scale of the object
         spawnedPiece.transform.position = new Vector3(x, y, -1);
         spawnedPiece.transform.localScale = new Vector3(_pieceScale, _pieceScale, 1);
 
+        // Add Components
         _piece = spawnedPiece.AddComponent<Piece>();
+        spawnedPiece.AddComponent<BoxCollider2D>();
         
         return spawnedPiece;
     }
+
+    void 
 
 }
