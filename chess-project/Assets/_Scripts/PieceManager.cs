@@ -9,81 +9,64 @@ Class manages placement of the pieces and selects the correct piece for the star
 public class PieceManager : MonoBehaviour
 {
 
-    [SerializeField] Piece _piecePrefab;
+    // Might not be needed
+    // [SerializeField] Piece _piecePrefab;
+    
+    // constant float
+    const private float _pieceScale = 1.5f;  
 
     public Piece _piece;
+
+
     
     /**
-    Generates the Pieces on the board by the providing the x and y values of the tile positions.
-
-    TODO: Can be done prettier! and shorter !!!
+    Generates the Pieces on the board by the providing the x and y values of the tile positions provided by x and y.
+    Add an SpriteRenderer to add the chess piece sprite by calling the GetSprite function from Piece class.
     **/
     public void PlacePieces(int x, int y){
 
-        // Create a row of pawns at the for both players...
+        // Create the pawn pieces
         if(y == 1 || y == 6){
             Debug.Log(System.String.Format("Tile found: {0},{1}", x, y));
 
-            GameObject spawnedPiece = new GameObject($"Pawn {x},{y}");
-            spawnedPiece.transform.position = new Vector3(x, y, -3);
-            spawnedPiece.transform.localScale = new Vector3(1.5f, 1.5f, 1);
-            
-            _piece = spawnedPiece.AddComponent<Piece>();
-            
+            // Create an pawn object with the name and at the psoition x and y
+            GameObject spawnedPiece = CreatePieceGameObject($"Pawn {x},{y}", x, y);
+
+            // Add a SpriteRenderer to the piece and select the sprite 
             SpriteRenderer _renderer = spawnedPiece.AddComponent<SpriteRenderer>();
             _renderer.sprite = _piece.GetSprite(y == 1 ? "pawn" : "pawn1");
         }
 
 
-
+        // Create other pieces that are not pawns 
         if(y == 0 || y == 7){
             if(x == 0 || x == 7){
-                    GameObject spawnedPiece = new GameObject($"Rook {x},{y}");
-                    spawnedPiece.transform.position = new Vector3(x, y, -3);
-                    spawnedPiece.transform.localScale = new Vector3(1.5f, 1.5f, 1);
+                    GameObject spawnedPiece = CreatePieceGameObject($"Rook {x},{y}", x, y);
 
-                    _piece = spawnedPiece.AddComponent<Piece>();
-            
                     SpriteRenderer _renderer = spawnedPiece.AddComponent<SpriteRenderer>();
                     _renderer.sprite = _piece.GetSprite(y == 0 ? "rook" : "rook1");
             }
             else if(x == 1 || x == 6){  
-                    GameObject spawnedPiece = new GameObject($"Knight {x},{y}");
-                    spawnedPiece.transform.position = new Vector3(x, y, -3);
-                    spawnedPiece.transform.localScale = new Vector3(1.5f, 1.5f, 1);
-
-                    _piece = spawnedPiece.AddComponent<Piece>();
-            
+                    GameObject spawnedPiece = CreatePieceGameObject($"Knight {x},{y}", x, y); 
+                    
                     SpriteRenderer _renderer = spawnedPiece.AddComponent<SpriteRenderer>();
                     _renderer.sprite = _piece.GetSprite(y == 0 ? "knight" : "knight1");
             }
             else if(x == 2 ||x == 5){
-                    GameObject spawnedPiece = new GameObject($"Bishop {x},{y}");
-                    spawnedPiece.transform.position = new Vector3(x, y, -3);
-                    spawnedPiece.transform.localScale = new Vector3(1.5f, 1.5f, 1);
-
-                    _piece = spawnedPiece.AddComponent<Piece>();
-            
+                    GameObject spawnedPiece = CreatePieceGameObject($"Bishop {x},{y}", x, y); 
+                    
                     SpriteRenderer _renderer = spawnedPiece.AddComponent<SpriteRenderer>();
                     _renderer.sprite = _piece.GetSprite(y == 0 ? "bishop" : "bishop1");
             }
             else if(x == 3){
-                    GameObject spawnedPiece = new GameObject($"{x},{y}");
-                    spawnedPiece.transform.position = new Vector3(x, y, -3);
-                    spawnedPiece.transform.localScale = new Vector3(1.5f, 1.5f, 1);
-
-                    _piece = spawnedPiece.AddComponent<Piece>();
-            
+                    GameObject spawnedPiece = CreatePieceGameObject($"{x},{y}", x, y); 
+                    
                     SpriteRenderer _renderer = spawnedPiece.AddComponent<SpriteRenderer>();
                     _renderer.sprite = _piece.GetSprite(y == 0 ? "king" : "queen1");
             }
             else if(x == 4){
-                    GameObject spawnedPiece = new GameObject($"{x},{y}");
-                    spawnedPiece.transform.position = new Vector3(x, y, -3);
-                    spawnedPiece.transform.localScale = new Vector3(1.5f, 1.5f, 1);
-
-                    _piece = spawnedPiece.AddComponent<Piece>();
-            
+                    GameObject spawnedPiece = CreatePieceGameObject($"{x},{y}", x, y);
+                                
                     SpriteRenderer _renderer = spawnedPiece.AddComponent<SpriteRenderer>();
                     _renderer.sprite = _piece.GetSprite(y == 0 ? "queen" : "king1");
             }
@@ -91,5 +74,18 @@ public class PieceManager : MonoBehaviour
         }
     }
 
+
+    /**
+    Create an GameObject representing a chess piece  
+    **/
+    public GameObject CreatePieceGameObject(string name, float x, float y){
+        GameObject spawnedPiece = new GameObject(name);
+        spawnedPiece.transform.position = new Vector3(x, y, -1);
+        spawnedPiece.transform.localScale = new Vector3(_pieceScale, _pieceScale, 1);
+
+        _piece = spawnedPiece.AddComponent<Piece>();
+        
+        return spawnedPiece;
+    }
 
 }
