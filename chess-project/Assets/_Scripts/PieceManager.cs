@@ -13,7 +13,7 @@ public class PieceManager : MonoBehaviour
     // [SerializeField] Piece _piecePrefab;
     
     // constant float indicating the scale of the pieces for x and y 
-    const private float _pieceScale = 1.5f;  
+    private float _pieceScale = 1.5f;  
 
     public Piece _piece;
 
@@ -90,7 +90,4 @@ public class PieceManager : MonoBehaviour
         
         return spawnedPiece;
     }
-
-    void 
-
 }
