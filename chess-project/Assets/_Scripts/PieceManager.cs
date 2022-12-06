@@ -16,7 +16,7 @@ public class PieceManager : MonoBehaviour
     /**
     Generates the Pieces on the board by the providing the x and y values of the tile positions.
 
-    TODO: Can be done prettier!
+    TODO: Can be done prettier! and shorter !!!
     **/
     public void PlacePieces(int x, int y){
 
@@ -26,6 +26,7 @@ public class PieceManager : MonoBehaviour
 
             GameObject spawnedPiece = new GameObject($"Pawn {x},{y}");
             spawnedPiece.transform.position = new Vector3(x, y, -3);
+            spawnedPiece.transform.localScale = new Vector3(1.5f, 1.5f, 1);
             
             _piece = spawnedPiece.AddComponent<Piece>();
             
@@ -35,15 +36,12 @@ public class PieceManager : MonoBehaviour
 
 
 
-
-
-
-
         if(y == 0 || y == 7){
             if(x == 0 || x == 7){
                     GameObject spawnedPiece = new GameObject($"Rook {x},{y}");
                     spawnedPiece.transform.position = new Vector3(x, y, -3);
-            
+                    spawnedPiece.transform.localScale = new Vector3(1.5f, 1.5f, 1);
+
                     _piece = spawnedPiece.AddComponent<Piece>();
             
                     SpriteRenderer _renderer = spawnedPiece.AddComponent<SpriteRenderer>();
@@ -52,7 +50,8 @@ public class PieceManager : MonoBehaviour
             else if(x == 1 || x == 6){  
                     GameObject spawnedPiece = new GameObject($"Knight {x},{y}");
                     spawnedPiece.transform.position = new Vector3(x, y, -3);
-            
+                    spawnedPiece.transform.localScale = new Vector3(1.5f, 1.5f, 1);
+
                     _piece = spawnedPiece.AddComponent<Piece>();
             
                     SpriteRenderer _renderer = spawnedPiece.AddComponent<SpriteRenderer>();
@@ -61,7 +60,8 @@ public class PieceManager : MonoBehaviour
             else if(x == 2 ||x == 5){
                     GameObject spawnedPiece = new GameObject($"Bishop {x},{y}");
                     spawnedPiece.transform.position = new Vector3(x, y, -3);
-            
+                    spawnedPiece.transform.localScale = new Vector3(1.5f, 1.5f, 1);
+
                     _piece = spawnedPiece.AddComponent<Piece>();
             
                     SpriteRenderer _renderer = spawnedPiece.AddComponent<SpriteRenderer>();
@@ -70,7 +70,8 @@ public class PieceManager : MonoBehaviour
             else if(x == 3){
                     GameObject spawnedPiece = new GameObject($"{x},{y}");
                     spawnedPiece.transform.position = new Vector3(x, y, -3);
-            
+                    spawnedPiece.transform.localScale = new Vector3(1.5f, 1.5f, 1);
+
                     _piece = spawnedPiece.AddComponent<Piece>();
             
                     SpriteRenderer _renderer = spawnedPiece.AddComponent<SpriteRenderer>();
@@ -79,7 +80,8 @@ public class PieceManager : MonoBehaviour
             else if(x == 4){
                     GameObject spawnedPiece = new GameObject($"{x},{y}");
                     spawnedPiece.transform.position = new Vector3(x, y, -3);
-            
+                    spawnedPiece.transform.localScale = new Vector3(1.5f, 1.5f, 1);
+
                     _piece = spawnedPiece.AddComponent<Piece>();
             
                     SpriteRenderer _renderer = spawnedPiece.AddComponent<SpriteRenderer>();
