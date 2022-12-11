@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -29,10 +30,12 @@ public class PieceManager : MonoBehaviour
         if(y == 1 || y == 6){
             // Create an pawn object with the name and at the psoition x and y
             GameObject spawnedPiece = CreatePieceGameObject($"Pawn {x},{y}", x, y);
-
+            
+            Pawn _pawn = spawnedPiece.AddComponent<Pawn>();
             // Add a SpriteRenderer to the piece and select the sprite 
             SpriteRenderer _renderer = spawnedPiece.AddComponent<SpriteRenderer>();
             _renderer.sprite = _piece.GetSprite(y == 1 ? "pawn" : "pawn1");
+            
         }
 
 
@@ -41,17 +44,23 @@ public class PieceManager : MonoBehaviour
             if(x == 0 || x == 7){
                     GameObject spawnedPiece = CreatePieceGameObject($"Rook {x},{y}", x, y);
 
+                    Rook _rookScript = spawnedPiece.AddComponent<Rook>();
+
                     SpriteRenderer _renderer = spawnedPiece.AddComponent<SpriteRenderer>();
                     _renderer.sprite = _piece.GetSprite(y == 0 ? "rook" : "rook1");
             }
             else if(x == 1 || x == 6){  
                     GameObject spawnedPiece = CreatePieceGameObject($"Knight {x},{y}", x, y); 
+
+                    Knight _knight = spawnedPiece.AddComponent<Knight>();
                     
                     SpriteRenderer _renderer = spawnedPiece.AddComponent<SpriteRenderer>();
                     _renderer.sprite = _piece.GetSprite(y == 0 ? "knight" : "knight1");
             }
             else if(x == 2 ||x == 5){
                     GameObject spawnedPiece = CreatePieceGameObject($"Bishop {x},{y}", x, y); 
+
+                    Bishop _bishop = spawnedPiece.AddComponent<Bishop>();
                     
                     SpriteRenderer _renderer = spawnedPiece.AddComponent<SpriteRenderer>();
                     _renderer.sprite = _piece.GetSprite(y == 0 ? "bishop" : "bishop1");
@@ -61,12 +70,26 @@ public class PieceManager : MonoBehaviour
                     
                     SpriteRenderer _renderer = spawnedPiece.AddComponent<SpriteRenderer>();
                     _renderer.sprite = _piece.GetSprite(y == 0 ? "king" : "queen1");
+
+                    if(_renderer.sprite.name == "queen1"){
+                        Queen _queen = spawnedPiece.AddComponent<Queen>();
+                    }
+                    else{
+                        King _king = spawnedPiece.AddComponent<King>();
+                    }
             }
             else if(x == 4){
                     GameObject spawnedPiece = CreatePieceGameObject($"{x},{y}", x, y);
                                 
                     SpriteRenderer _renderer = spawnedPiece.AddComponent<SpriteRenderer>();
                     _renderer.sprite = _piece.GetSprite(y == 0 ? "queen" : "king1");
+
+                    if(_renderer.sprite.name == "queen"){
+                        Queen _queen = spawnedPiece.AddComponent<Queen>();
+                    }
+                    else{
+                        King _king = spawnedPiece.AddComponent<King>();
+                    }
             }
             
         }

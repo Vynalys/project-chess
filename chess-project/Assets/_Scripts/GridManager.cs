@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GridManager : MonoBehaviour{
 
  [SerializeField] private int _width, _height;
@@ -31,6 +32,7 @@ public class GridManager : MonoBehaviour{
 				// create a tile and nameing it by its position
 				var spawnedTile = Instantiate(_tilePrefab, new Vector3(x, y), Quaternion.identity);
 				spawnedTile.name = $"Tile {x} {y}";
+				
 
 				// select a color for the tile by checking its cordinates
 				var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);

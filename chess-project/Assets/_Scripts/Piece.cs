@@ -45,6 +45,11 @@ public class Piece : MonoBehaviour
         
     }
 
+    public void OnClick(){
+        
+    }
+    
+
     /** 
     Sets the color of the renderer. Can be used to color the pieces 
     in a different color.
